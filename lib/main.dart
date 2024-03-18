@@ -1,17 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:bari_koi_map_with_autocomplete/app/app.dart';
+import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: Text("data"),
-    );
-  }
+  bootstrap(() => const App());
 }
