@@ -45,3 +45,13 @@ app.*.map.json
 
 # FVM Version Cache
 .fvm/
+
+# generated code
+*.g.dart
+*.freezed.dart
+*.config.dart
+*.graphql.dart
+*.diff
+
+# env
+/.env
