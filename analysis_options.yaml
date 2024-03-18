@@ -1,0 +1,14 @@
+include: package:lint/analysis_options.yaml
+analyzer:
+  exclude:
+    - lib/ioc.config.dart
+    - lib/**/*.freezed.dart
+    - lib/**/*.g.dart
+    - lib/**/*.gr.dart
+    - lib/**/*.config.dart
+linter:
+  rules:
+    unawaited_futures: true
+    sort_pub_dependencies: false
+    lines_longer_than_80_chars: true
+    public_member_api_docs: true
