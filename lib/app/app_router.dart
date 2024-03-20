@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:bari_koi_map_with_autocomplete/features/map/presentation/screen/map_screen.dart';
 import 'package:go_router/go_router.dart';
 
 /// it will return [GoRouter] object,
@@ -13,7 +13,7 @@ GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       name: 'home',
-      builder: (context, state) => const Scaffold(),
+      builder: (context, state) => const MapScreen(),
     ),
   ],
 );
