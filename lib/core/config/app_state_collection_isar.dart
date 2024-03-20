@@ -2,7 +2,8 @@ import 'package:isar/isar.dart';
 
 part 'app_state_collection_isar.g.dart';
 
-/// The `AppState` class represents a collection in the Isar database for managing application state.
+/// The `AppState` class represents a collection in the Isar database for
+/// managing application state.
 ///
 /// This class is annotated with `@collection` and is part of the Isar database.
 @Collection()
@@ -14,7 +15,8 @@ class AppState {
   User? user;
 }
 
-/// The `User` class represents an embedded model within the `AppState` collection.
+/// The `User` class represents an embedded model
+/// within the `AppState` collection.
 ///
 /// This class is annotated with `@embedded`.
 @embedded
