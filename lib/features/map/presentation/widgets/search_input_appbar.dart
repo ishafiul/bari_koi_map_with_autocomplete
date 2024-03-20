@@ -1,5 +1,7 @@
 import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
+import 'package:bari_koi_map_with_autocomplete/core/cubits/zoom_drawer/zoom_drawer_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchInputAppBar extends StatelessWidget {
@@ -59,7 +61,7 @@ class SearchInputAppBar extends StatelessWidget {
                 widthFactor: 1.5,
                 child: IconButton(
                   onPressed: () {
-                   /// TODO: toggle menu
+                    context.read<ZoomDrawerMenuCubit>().toggle();
                   },
                   icon: Icon(
                     Icons.search,

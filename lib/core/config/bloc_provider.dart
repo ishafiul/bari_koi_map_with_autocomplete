@@ -1,3 +1,4 @@
+import 'package:bari_koi_map_with_autocomplete/core/cubits/zoom_drawer/zoom_drawer_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,5 +10,9 @@ import 'package:injectable/injectable.dart';
 @Singleton()
 class Provider {
   /// [List] of [BlocProvider]
-  List<BlocProvider> providers = [];
+  List<BlocProvider> providers = [
+    BlocProvider<ZoomDrawerMenuCubit>(
+      create: (context) => ZoomDrawerMenuCubit(),
+    )
+  ];
 }

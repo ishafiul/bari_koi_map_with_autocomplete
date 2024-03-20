@@ -1,7 +1,9 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
+import 'package:bari_koi_map_with_autocomplete/core/config/bloc_provider.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/get_it.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// [App] is a [StatelessWidget] that will hold material app with
@@ -13,20 +15,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 800),
-      minTextAdapt: true,
-      useInheritedMediaQuery: true,
-      splitScreenMode: true,
-      builder: (BuildContext context, _) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          theme: getIt<AppTheme>().lightTheme,
-          routerDelegate: router.routerDelegate,
-          routeInformationParser: router.routeInformationParser,
-          routeInformationProvider: router.routeInformationProvider,
-        );
-      },
+    return MultiBlocProvider(
+      providers: getIt<Provider>().providers,
+      child: ScreenUtilInit(
+        designSize: const Size(360, 800),
+        minTextAdapt: true,
+        useInheritedMediaQuery: true,
+        splitScreenMode: true,
+        builder: (BuildContext context, _) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: getIt<AppTheme>().lightTheme,
+            routerDelegate: router.routerDelegate,
+            routeInformationParser: router.routeInformationParser,
+            routeInformationProvider: router.routeInformationProvider,
+          );
+        },
+      ),
     );
   }
 }
