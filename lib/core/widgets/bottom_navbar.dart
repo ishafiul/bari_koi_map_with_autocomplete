@@ -1,3 +1,4 @@
+import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_nav_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,20 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
+
+  void _changeScreen() {
+    if (currentIndex == 0) {
+      router.go('/');
+    }
+    if (currentIndex == 1) {
+      router.go('/saved');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +61,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             onTap: (int index) {
               currentIndex = index;
               setState(() {});
+              _changeScreen();
             },
             items: List.generate(
               2,

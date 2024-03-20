@@ -59,7 +59,6 @@ class SearchInputAppBar extends StatelessWidget {
           child: TextField(
             readOnly: true,
             onTap: () async {
-              print("object");
               await showSearch(
                 context: context,
                 delegate: CustomSearchDelegate(),

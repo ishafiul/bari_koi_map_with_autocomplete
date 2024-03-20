@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:bari_koi_map_with_autocomplete/core/config/env.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/map_utils.dart';
-import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_navbar.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/nearby_me.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/search_input_appbar.dart';
 import 'package:flutter/material.dart';

@@ -13,6 +13,6 @@ class Provider {
   List<BlocProvider> providers = [
     BlocProvider<ZoomDrawerMenuCubit>(
       create: (context) => ZoomDrawerMenuCubit(),
-    )
+    ),
   ];
 }
