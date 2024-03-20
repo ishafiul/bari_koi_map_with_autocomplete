@@ -32,7 +32,7 @@ class AppBlocObserver extends BlocObserver {
     if (error is StateError &&
         error.message == 'Cannot emit new states after calling close') {
       logger.e('onError(${bloc.runtimeType}, $error,'
-          '${Chain.capture(() => stackTrace)} )');
+          '${Trace.from(stackTrace)} )');
     } else {
       super.onError(bloc, error, stackTrace);
     }
@@ -48,7 +48,7 @@ Future<void> bootstrap(
   FlutterError.onError = (details) {
     logger.e(
       details.exceptionAsString(),
-      stackTrace: Chain.capture(() => details.stack),
+      stackTrace: details.stack == null ? null : Trace.from(details.stack!),
     );
   };
   Bloc.observer = const AppBlocObserver();
@@ -70,7 +70,7 @@ Future<void> bootstrap(
       FlutterError.onError = (FlutterErrorDetails details) {
         logger.e(
           details.exceptionAsString(),
-          stackTrace: Chain.capture(() => details.stack),
+          stackTrace: details.stack == null ? null : Trace.from(details.stack!),
         );
       };
 
@@ -79,29 +79,29 @@ Future<void> bootstrap(
 
       SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
+          statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
           systemNavigationBarContrastEnforced: false,
-          systemNavigationBarColor: Colors.white,
+          systemNavigationBarColor: Colors.transparent,
         ),
       );
       runApp(await builder());
     },
     (Object error, StackTrace stackTrace) {
-      logger.e(error.toString(), stackTrace: Chain.capture(() => stackTrace));
+      logger.e(error.toString(), stackTrace: Trace.from(stackTrace));
 
       if (error is FlutterError) {
         if (error.message.toLowerCase().contains('renderflex')) {
-          logger.e('$error, ${Chain.capture(() => stackTrace)}');
+          logger.e('$error, ${Trace.from(stackTrace)}');
         } else if (error.message
             .toLowerCase()
             .contains('cannot emit new states')) {
-          logger.e('$error, ${Chain.capture(() => stackTrace)}');
+          logger.e('$error, ${Trace.from(stackTrace)}');
         } else {
-          logger.e('$error, ${Chain.capture(() => stackTrace)}');
+          logger.e('$error, ${Trace.from(stackTrace)}');
         }
       } else {
-        logger.e('$error, ${Chain.capture(() => stackTrace)}');
+        logger.e('$error, ${Trace.from(stackTrace)}');
       }
     },
   );
