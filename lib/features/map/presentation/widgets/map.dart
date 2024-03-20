@@ -56,7 +56,7 @@ class _MainMapState extends State<MainMap> {
             },
           ),
           Positioned(
-            top: 56.h,
+            top: 20.h,
             child: SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: Column(

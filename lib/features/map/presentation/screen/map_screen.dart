@@ -27,21 +27,23 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ZoomDrawer(
-        menuScreen: const AppMenu(),
-        mainScreen: MainMap(
-          toggleMap: () => zoomDrawerController.toggle?.call(),
+      body: SafeArea(
+        child: ZoomDrawer(
+          menuScreen: const AppMenu(),
+          mainScreen: MainMap(
+            toggleMap: () => zoomDrawerController.toggle?.call(),
+          ),
+          controller: zoomDrawerController,
+          angle: 0,
+          androidCloseOnBackTap: true,
+          shadowLayer1Color: Colors.white,
+          clipMainScreen: false,
+          mainScreenScale: 0,
+          mainScreenTapClose: true,
+          disableDragGesture: true,
+          slideWidth: MediaQuery.sizeOf(context).width * 0.7,
+          menuScreenWidth: MediaQuery.sizeOf(context).width * 0.7,
         ),
-        controller: zoomDrawerController,
-        angle: 0,
-        androidCloseOnBackTap: true,
-        shadowLayer1Color: Colors.white,
-        clipMainScreen: false,
-        mainScreenScale: 0,
-        mainScreenTapClose: true,
-        disableDragGesture: true,
-        slideWidth: MediaQuery.sizeOf(context).width * 0.7,
-        menuScreenWidth: MediaQuery.sizeOf(context).width * 0.7,
       ),
     );
   }
