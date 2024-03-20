@@ -58,10 +58,10 @@ class _MapScreenState extends State<MapScreen> {
             top: 20.h,
             child: SizedBox(
               width: MediaQuery.sizeOf(context).width,
-              child: Column(
+              child: const Column(
                 children: [
                   SearchInputAppBar(),
-                  const NarebyMeList(),
+                  NarebyMeList(),
                 ],
               ),
             ),
