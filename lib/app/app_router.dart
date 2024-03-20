@@ -1,3 +1,4 @@
+import 'package:bari_koi_map_with_autocomplete/core/widgets/shell_widget.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/screen/map_screen.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ GoRouter router = GoRouter(
           builder: (context, state) => Scaffold(),
         ),
       ],
-      builder: (context, state, child) => BottomNavBar(
+      builder: (context, state, child) => ShellWidget(
         child: child,
       ),
     ),

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchInputAppBar extends StatelessWidget {
-  const SearchInputAppBar({super.key, required this.toggleMap});
-
-  final void Function() toggleMap;
+  const SearchInputAppBar({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class SearchInputAppBar extends StatelessWidget {
                 widthFactor: 1.5,
                 child: IconButton(
                   onPressed: () {
-                    toggleMap.call();
+                   /// TODO: toggle menu
                   },
                   icon: Icon(
                     Icons.search,
