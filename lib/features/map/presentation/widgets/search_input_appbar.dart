@@ -4,6 +4,7 @@ import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchInputAppBar extends StatelessWidget {
   const SearchInputAppBar({
@@ -71,9 +72,9 @@ class SearchInputAppBar extends StatelessWidget {
                   onPressed: () {
                     context.read<ZoomDrawerMenuCubit>().toggle();
                   },
-                  icon: Icon(
-                    Icons.search,
-                    size: 24.r,
+                  icon: SvgPicture.asset(
+                    'assets/images/svg/menu.svg',
+                    color: AppColor.primary,
                   ),
                 ),
               ),
