@@ -29,15 +29,22 @@ dependencies:
       url: https://github.com/maplibre/flutter-maplibre-gl.git
       ref: main
   flutter_zoom_drawer: ^3.2.0
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  retrofit: ^4.1.0
+  dio: ^5.4.1
 
 dev_dependencies:
   build_runner: ^2.4.8
   envied_generator: ^0.5.3
   flutter_test:
     sdk: flutter
+  freezed: ^2.4.7
   injectable_generator: ^2.1.6
   isar_generator: ^3.1.0+1
+  json_serializable: ^6.7.1
   lint: ^2.3.0
+  retrofit_generator: ^8.1.0
 
 flutter:
   uses-material-design: true
