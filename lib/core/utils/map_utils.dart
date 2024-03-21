@@ -34,10 +34,33 @@ Future<void> _baseMarker({
   return controller.addImage(_markerName, list);
 }
 
-Future<void> addMarker({
+Future<Symbol> addMarker({
   required LatLng geometry,
   required MaplibreMapController controller,
 }) async {
   await _baseMarker(controller: controller);
-  await controller.addSymbol(_symbolOptions(geometry: geometry));
+  return await controller.addSymbol(_symbolOptions(geometry: geometry));
+}
+
+Future<Symbol> updateMapPosition({
+  required MaplibreMapController controller,
+  Symbol? currentSymbol,
+  required LatLng latLng,
+}) async {
+  await controller.animateCamera(
+    duration: const Duration(seconds: 1),
+    CameraUpdate.newCameraPosition(
+      CameraPosition(
+        target: latLng,
+        zoom: 14,
+      ),
+    ),
+  );
+  if (currentSymbol != null) {
+    await controller.removeSymbol(currentSymbol);
+  }
+  return await addMarker(
+    controller: controller,
+    geometry: latLng,
+  );
 }

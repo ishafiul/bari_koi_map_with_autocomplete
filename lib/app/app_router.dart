@@ -1,4 +1,5 @@
 import 'package:bari_koi_map_with_autocomplete/core/widgets/shell_widget.dart';
+import 'package:bari_koi_map_with_autocomplete/features/map/data/models/autocomplete_model.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/screen/map_screen.dart';
 import 'package:bari_koi_map_with_autocomplete/features/saved/presentation/screen/saved_address_sceen.dart';
 import 'package:go_router/go_router.dart';
@@ -18,9 +19,12 @@ GoRouter router = GoRouter(
           path: '/',
           name: 'home',
           pageBuilder: (context, state) {
+            final Place? extra = state.extra as Place?;
             return NoTransitionPage(
               key: state.pageKey,
-              child: const MapScreen(),
+              child: MapScreen(
+                place: extra,
+              ),
             );
           },
         ),
