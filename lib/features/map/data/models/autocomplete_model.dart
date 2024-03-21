@@ -1,3 +1,4 @@
+import 'package:bari_koi_map_with_autocomplete/core/config/env.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'autocomplete_model.freezed.dart';
@@ -19,17 +20,17 @@ class AutocompleteModel with _$AutocompleteModel {
 class Place with _$Place {
   const factory Place({
     required int id,
-    required double longitude,
-    required double latitude,
-    required String address,
-    required String addressBn,
-    required String city,
-    required String cityBn,
-    required String area,
-    required String areaBn,
-    required int postCode,
-    required String pType,
-    required String uCode,
+    required String longitude,
+    required String latitude,
+    required String? address,
+    required String? addressBn,
+    required String? city,
+    required String? cityBn,
+    required String? area,
+    required String? areaBn,
+    required int? postCode,
+    required String? pType,
+    required String? uCode,
   }) = _Place;
 
   factory Place.fromJson(Map<String, Object?> json) => _$PlaceFromJson(json);
@@ -39,8 +40,7 @@ class Place with _$Place {
 class AutocompleteInput with _$AutocompleteInput {
   const factory AutocompleteInput({
     required String q,
-    String? city,
-    bool? bangla,
+    @Default(EnvProd.barikoiApiKey) String? api_key,
   }) = _AutocompleteInput;
 
   factory AutocompleteInput.fromJson(Map<String, Object?> json) =>
