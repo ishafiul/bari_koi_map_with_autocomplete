@@ -1,7 +1,9 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
+import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_nav_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
@@ -15,17 +17,36 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
 
-  void _changeScreen() {
-    if (currentIndex == 0) {
+  void _changeScreen(int index) {
+    if (index == 0) {
       router.go('/');
     }
-    if (currentIndex == 1) {
+    if (index == 1) {
       router.go('/saved');
+    }
+  }
+
+  void _updateIndex() {
+    if (GoRouter.of(context).routeInformationProvider.value.uri ==
+        Uri(path: '/')) {
+      setState(() {
+        currentIndex = 0;
+      });
+    }
+    if (GoRouter.of(context).routeInformationProvider.value.uri ==
+        Uri(path: '/saved')) {
+      setState(() {
+        currentIndex = 1;
+      });
     }
   }
 
   @override
   void initState() {
+    GoRouter.of(context).routeInformationProvider.addListener(() {
+      _updateIndex();
+    });
+
     super.initState();
   }
 
@@ -58,10 +79,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             showSelectedLabels: false,
             showUnselectedLabels: false,
             currentIndex: currentIndex,
-            onTap: (int index) {
-              currentIndex = index;
-              setState(() {});
-              _changeScreen();
+            onTap: (int index) async {
+              _changeScreen(index);
+              _updateIndex();
             },
             items: List.generate(
               2,

@@ -1,3 +1,4 @@
+import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
 import 'package:flutter/material.dart';
 
 class SavedAddressAcreen extends StatelessWidget {
@@ -10,7 +11,12 @@ class SavedAddressAcreen extends StatelessWidget {
         title: const Text("Saved Address"),
         centerTitle: true,
       ),
-      body: const Center(child: Text("Saved Address Screen")),
+      body: Center(
+          child: GestureDetector(
+              onTap: () {
+                router.go('/');
+              },
+              child: Text("Saved Address Screen"))),
     );
   }
 }
