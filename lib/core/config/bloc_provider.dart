@@ -4,6 +4,9 @@ import 'package:bari_koi_map_with_autocomplete/features/map/data/repositories/au
 import 'package:bari_koi_map_with_autocomplete/features/map/data/services/remote/autocomplete_service.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/auto_complete/auto_complete_cubit.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/data/repositories/saved_places_repository.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/data/services/local/saved_place_service.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/domain/cubits/saved_places/saved_places_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -22,6 +25,11 @@ class Provider {
     ),
     BlocProvider<SelectedPlaceCubit>(
       create: (context) => SelectedPlaceCubit(),
+    ),
+    BlocProvider<SavedPlacesCubit>(
+      create: (context) {
+        return SavedPlacesCubit(SavedPlacesRepository(SavedPlaceService()));
+      },
     ),
     BlocProvider<AutoCompleteCubit>(
       create: (context) {
