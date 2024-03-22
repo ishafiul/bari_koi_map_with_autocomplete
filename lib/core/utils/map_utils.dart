@@ -15,14 +15,6 @@ SymbolOptions _symbolOptions({
     iconImage: _markerName,
     iconSize: .25,
     iconAnchor: 'bottom',
-    textField: 'test',
-    textSize: 12.5,
-    textOffset: const Offset(0, 1.2),
-    textAnchor: 'bottom',
-    textColor: '#000000',
-    textHaloBlur: 1,
-    textHaloColor: '#ffffff',
-    textHaloWidth: 0.8,
   );
 }
 
@@ -36,15 +28,18 @@ Future<void> _baseMarker({
 
 Future<Symbol> addMarker({
   required LatLng geometry,
+  Symbol? currentSymbol,
   required MaplibreMapController controller,
 }) async {
+  if (currentSymbol != null) {
+    await controller.removeSymbol(currentSymbol);
+  }
   await _baseMarker(controller: controller);
   return await controller.addSymbol(_symbolOptions(geometry: geometry));
 }
 
-Future<Symbol> updateMapPosition({
+Future<void> updateMapPosition({
   required MaplibreMapController controller,
-  Symbol? currentSymbol,
   required LatLng latLng,
 }) async {
   await controller.animateCamera(
@@ -55,13 +50,6 @@ Future<Symbol> updateMapPosition({
         zoom: 14,
       ),
     ),
-  );
-  if (currentSymbol != null) {
-    await controller.removeSymbol(currentSymbol);
-  }
-  return await addMarker(
-    controller: controller,
-    geometry: latLng,
   );
 }
 
