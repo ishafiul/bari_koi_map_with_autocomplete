@@ -241,18 +241,18 @@ class PlaceInfo extends StatelessWidget {
               child: InkWell(
                 onTap: () async {
                   final data = SavedPlace()
-                    ..longitude = widget.place.longitude
-                    ..latitude = widget.place.latitude
-                    ..city = widget.place.city
-                    ..uCode = widget.place.uCode
-                    ..pType = widget.place.pType
-                    ..address = widget.place.address
-                    ..areaBn = widget.place.areaBn
-                    ..cityBn = widget.place.cityBn
-                    ..postCode = widget.place.postCode
-                    ..id = widget.place.id
-                    ..addressBn = widget.place.addressBn
-                    ..area = widget.place.area;
+                    ..longitude = place.longitude
+                    ..latitude = place.latitude
+                    ..city = place.city
+                    ..uCode = place.uCode
+                    ..pType = place.pType
+                    ..address = place.address
+                    ..areaBn = place.areaBn
+                    ..cityBn = place.cityBn
+                    ..postCode = place.postCode
+                    ..id = place.id
+                    ..addressBn = place.addressBn
+                    ..area = place.area;
                   final saved =
                       await getIt<SavedPlaceService>().savePlace(data);
                   if (saved == null) {
