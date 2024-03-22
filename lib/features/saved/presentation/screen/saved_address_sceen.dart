@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SavedAddressAcreen extends StatefulWidget {
-  const SavedAddressAcreen({super.key});
+class SavedAddressScreen extends StatefulWidget {
+  const SavedAddressScreen({super.key});
 
   @override
-  State<SavedAddressAcreen> createState() => _SavedAddressAcreenState();
+  State<SavedAddressScreen> createState() => _SavedAddressScreenState();
 }
 
-class _SavedAddressAcreenState extends State<SavedAddressAcreen> {
+class _SavedAddressScreenState extends State<SavedAddressScreen> {
   @override
   void initState() {
     super.initState();
@@ -33,6 +33,11 @@ class _SavedAddressAcreenState extends State<SavedAddressAcreen> {
       body: BlocBuilder<SavedPlacesCubit, SavedPlacesState>(
         builder: (context, state) {
           if (state is SavedPlacesLoaded) {
+            if (state.savedPlaces.isEmpty) {
+              return const Center(
+                child: Text("No Saved Address"),
+              );
+            }
             return ListView.builder(
               itemCount: state.savedPlaces.length,
               itemBuilder: (context, index) {

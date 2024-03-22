@@ -34,7 +34,7 @@ GoRouter router = GoRouter(
           pageBuilder: (context, state) {
             return NoTransitionPage(
               key: state.pageKey,
-              child: const SavedAddressAcreen(),
+              child: const SavedAddressScreen(),
             );
           },
         ),

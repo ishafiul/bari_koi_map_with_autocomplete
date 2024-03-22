@@ -44,7 +44,9 @@ class CustomSearchDelegate extends SearchDelegate<Place> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // context.read<AutoCompleteCubit>().getAutocomplete(query); // if need letter by letter search
+    context
+        .read<AutoCompleteCubit>()
+        .getAutocomplete(query); // if need letter by letter search
     return const SearchPlaceTile();
   }
 }
