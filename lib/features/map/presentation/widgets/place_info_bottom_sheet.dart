@@ -1,7 +1,12 @@
+import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
+import 'package:bari_koi_map_with_autocomplete/core/config/get_it.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/map_utils.dart';
+import 'package:bari_koi_map_with_autocomplete/core/widgets/snackbar.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/data/models/autocomplete_model.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/data/schema/saved_places_isar_schema.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/data/services/local/saved_place_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -234,7 +239,40 @@ class PlaceInfo extends StatelessWidget {
               color: Colors.transparent,
               shape: const OvalBorder(),
               child: InkWell(
-                onTap: () {},
+                onTap: () async {
+                  final data = SavedPlace()
+                    ..longitude = widget.place.longitude
+                    ..latitude = widget.place.latitude
+                    ..city = widget.place.city
+                    ..uCode = widget.place.uCode
+                    ..pType = widget.place.pType
+                    ..address = widget.place.address
+                    ..areaBn = widget.place.areaBn
+                    ..cityBn = widget.place.cityBn
+                    ..postCode = widget.place.postCode
+                    ..id = widget.place.id
+                    ..addressBn = widget.place.addressBn
+                    ..area = widget.place.area;
+                  final saved =
+                      await getIt<SavedPlaceService>().savePlace(data);
+                  if (saved == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        content: AppSnackBar(message: "Already saved"),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        content: AppSnackBar(message: "Saved successfully"),
+                      ),
+                    );
+                  }
+                },
                 child: Icon(
                   CustomIcons.bookmark_2,
                   color: AppColor.secondary,
