@@ -1,4 +1,6 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
+import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
+import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/auto_complete/auto_complete_cubit.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +36,10 @@ class SearchPlaceTile extends StatelessWidget {
                   },
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                  leading: const Icon(Icons.location_pin),
+                  leading: const Icon(
+                    CustomIcons.location_1,
+                    color: AppColor.secondary,
+                  ),
                   title: Text(state.model.places[index].address ?? ''),
                   subtitle: Row(
                     children: [

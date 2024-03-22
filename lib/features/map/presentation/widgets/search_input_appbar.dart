@@ -1,5 +1,6 @@
 import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
 import 'package:bari_koi_map_with_autocomplete/core/cubits/zoom_drawer/zoom_drawer_cubit.dart';
+import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,8 +91,9 @@ class SearchInputAppBar extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: Icon(
-                    Icons.search,
-                    size: 24.r,
+                    CustomIcons.mic,
+                    color: AppColor.primary,
+                    size: 16.r,
                   ),
                 ),
               ),

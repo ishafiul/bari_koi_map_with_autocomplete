@@ -53,3 +53,9 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/svg/
+    - assets/fonts/
+    - assets/fonts/icon/
+  fonts:
+    - family:  CustomIcons
+      fonts:
+      - asset: assets/fonts/icon/CustomIcons.ttf

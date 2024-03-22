@@ -1,6 +1,34 @@
+import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
+import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/horizontal_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+List<NearbyMeInfo> nearbyMeList = [
+  NearbyMeInfo(
+    icon: CustomIcons.atm,
+    text: 'ATM',
+  ),
+  NearbyMeInfo(
+    icon: CustomIcons.school,
+    text: 'School',
+  ),
+  NearbyMeInfo(
+    icon: CustomIcons.hospital,
+    text: 'Hospital',
+  ),
+  NearbyMeInfo(
+    icon: CustomIcons.bank,
+    text: 'Bank',
+  ),
+];
+
+class NearbyMeInfo {
+  NearbyMeInfo({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+}
 
 class NarebyMeList extends StatelessWidget {
   const NarebyMeList({super.key});
@@ -8,7 +36,7 @@ class NarebyMeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HorizontalList(
-      itemCount: 12,
+      itemCount: nearbyMeList.length,
       itemBuilder: (context, index) => Container(
         height: 25.h,
         clipBehavior: Clip.antiAlias,
@@ -36,13 +64,23 @@ class NarebyMeList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.safety_check_rounded,
+                    nearbyMeList[index].icon,
                     size: 14.r,
+                    color: AppColor.secondary,
                   ),
                   SizedBox(
                     width: 10.w,
                   ),
-                  const Text("data"),
+                  Text(
+                    nearbyMeList[index].text,
+                    style: TextStyle(
+                      color: Color(0xFF2F4050),
+                      fontSize: 12.r,
+                      fontFamily: 'Graphik',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
+                    ),
+                  )
                 ],
               ),
             ),
