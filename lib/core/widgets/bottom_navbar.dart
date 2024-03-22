@@ -1,7 +1,9 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
 import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_nav_icon_widget.dart';
+import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,6 +37,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     }
     if (GoRouter.of(context).routeInformationProvider.value.uri ==
         Uri(path: '/saved')) {
+      context.read<SelectedPlaceCubit>().clearSelectedPlace();
       setState(() {
         currentIndex = 1;
       });
