@@ -1,4 +1,4 @@
-import 'package:bari_koi_map_with_autocomplete/core/config/app_state_collection_isar.dart';
+import 'package:bari_koi_map_with_autocomplete/features/saved/data/schema/saved_places_isar_schema.dart';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
@@ -29,7 +29,7 @@ class DB {
     final dir = await getApplicationDocumentsDirectory();
     if (Isar.instanceNames.isEmpty) {
       return await Isar.open(
-        [AppStateSchema],
+        [SavedSchema],
         directory: dir.path,
       );
     }
