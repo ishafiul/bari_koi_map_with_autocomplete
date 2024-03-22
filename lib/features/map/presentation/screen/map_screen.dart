@@ -1,22 +1,21 @@
 import 'dart:math';
 
-import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
-import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/env.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/map_utils.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/data/models/autocomplete_model.dart';
+import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/nearby_me.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/place_info_bottom_sheet.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/presentation/widgets/search_input_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({super.key, this.place});
-
-  final Place? place;
+  const MapScreen({
+    super.key,
+  });
 
   @override
   State<MapScreen> createState() => _MapScreenState();
@@ -37,17 +36,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   void didUpdateWidget(covariant MapScreen oldWidget) {
-    if (widget.place != oldWidget.place) {
-      updateMapPosition(
-        controller: mController!,
-        latLng: LatLng(
-          double.parse(widget.place!.latitude),
-          double.parse(widget.place!.longitude),
-        ),
-        currentSymbol: symbol,
-      ).then((value) => symbol = value);
-      isOpenBottomSheet = true;
-    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -56,17 +44,34 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: isOpenBottomSheet
-          ? PlaceInfoBottomSheet(
+      bottomSheet: BlocConsumer<SelectedPlaceCubit, SelectedPlaceState>(
+        listener: (context, state) {
+          if (state is SelectedPlaceLoaded) {
+            updateMapPosition(
+              controller: mController!,
+              latLng: LatLng(
+                double.parse(state.place.latitude),
+                double.parse(state.place.longitude),
+              ),
+              currentSymbol: symbol,
+            ).then((value) => symbol = value);
+          }
+        },
+        builder: (context, state) {
+          if (state is SelectedPlaceLoaded) {
+            return PlaceInfoBottomSheet(
               onClose: () {
                 if (symbol != null) {
                   mController?.removeSymbol(symbol!);
-                  isOpenBottomSheet = false;
-                  setState(() {});
+                  context.read<SelectedPlaceCubit>().clearSelectedPlace();
                 }
               },
-            )
-          : null,
+              place: state.place,
+            );
+          }
+          return const SizedBox();
+        },
+      ),
       body: Stack(
         children: [
           MaplibreMap(

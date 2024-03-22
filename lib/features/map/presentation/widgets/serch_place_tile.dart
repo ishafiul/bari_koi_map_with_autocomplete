@@ -1,5 +1,6 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/auto_complete/auto_complete_cubit.dart';
+import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,10 @@ class SearchPlaceTile extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     router.pop();
-                    router.go('/', extra: state.model.places[index]);
+                    router.go('/');
+                    context
+                        .read<SelectedPlaceCubit>()
+                        .setSelectedPlace(state.model.places[index]);
                   },
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),

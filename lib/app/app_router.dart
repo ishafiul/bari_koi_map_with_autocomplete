@@ -19,12 +19,9 @@ GoRouter router = GoRouter(
           path: '/',
           name: 'home',
           pageBuilder: (context, state) {
-            final Place? extra = state.extra as Place?;
             return NoTransitionPage(
               key: state.pageKey,
-              child: MapScreen(
-                place: extra,
-              ),
+              child: MapScreen(),
             );
           },
         ),
