@@ -4,7 +4,7 @@ project(bari_koi_map_with_autocomplete LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "bari_koi_map_with_autocomplete")
+set(BINARY_NAME "Barikoi - Safi")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
