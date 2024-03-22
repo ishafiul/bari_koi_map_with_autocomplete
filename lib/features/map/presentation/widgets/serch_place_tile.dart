@@ -64,7 +64,7 @@ class SearchPlaceTile extends StatelessWidget {
             },
           );
         }
-        return const Center(child: Text("Loading..."));
+        return const SizedBox();
       },
     );
   }
