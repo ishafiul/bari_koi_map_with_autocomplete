@@ -57,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: Container(
-        height: 72.h,
+        height: 82.h,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
