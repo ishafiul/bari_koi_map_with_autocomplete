@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-/// Handles the permission specified by `permission` by checking and requesting it if necessary.
-/// If the permission is denied or permanently denied, it prompts the user with a dialog
-/// providing information about the permission and gives an option to open the settings.
+/// Handles the permission specified by `permission`
+/// by checking and requesting it if necessary.
+/// If the permission is denied or permanently denied,
+/// it prompts the user with a dialog
+/// providing information about the permission and gives an
+/// option to open the settings.
 ///
-/// The function returns after the user's response or if the permission is already granted.
+/// The function returns after the user's response or if
+/// the permission is already granted.
 ///
 /// Parameters:
 /// - `context`: The BuildContext to show dialogs and navigate.
@@ -75,13 +79,15 @@ Future<bool> _handelDeniedOrPermanentlyDenied({
   return true;
 }
 
-/// Shows a dialog requesting permission and provides options to cancel or open settings.
+/// Shows a dialog requesting permission and provides options to
+/// cancel or open settings.
 ///
 /// Parameters:
 /// - `context`: The BuildContext to show the dialog.
 /// - `builder`: A function that returns the content of the dialog.
 ///
-/// Returns a Future with the user's response (true if open settings, false if cancel).
+/// Returns a Future with the user's response
+/// (true if open settings, false if cancel).
 Future<T?> showRequestPermissionDialog<T>({
   required BuildContext context,
   String? accessName,

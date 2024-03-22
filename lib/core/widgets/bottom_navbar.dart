@@ -1,5 +1,4 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
-import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/widgets/bottom_nav_icon_widget.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
 import 'package:flutter/material.dart';

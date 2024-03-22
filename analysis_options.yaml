@@ -6,9 +6,9 @@ analyzer:
     - lib/**/*.g.dart
     - lib/**/*.gr.dart
     - lib/**/*.config.dart
+    - lib/**/custom_icons_icons.dart
 linter:
   rules:
     unawaited_futures: true
     sort_pub_dependencies: false
     lines_longer_than_80_chars: true
-    public_member_api_docs: true

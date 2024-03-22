@@ -41,7 +41,7 @@ class _ShellWidgetState extends State<ShellWidget> {
         body: ZoomDrawer(
           menuScreen: const AppMenu(),
           mainScreen: Scaffold(
-            bottomNavigationBar: BottomNavBar(),
+            bottomNavigationBar: const BottomNavBar(),
             body: SafeArea(
               child: widget.child,
             ),

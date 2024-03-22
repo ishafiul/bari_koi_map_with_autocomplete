@@ -70,7 +70,7 @@ class HorizontalList extends StatelessWidget {
         runAlignment: wrapAlignment ?? WrapAlignment.start,
         crossAxisAlignment: crossAxisAlignment ?? WrapCrossAlignment.start,
         children:
-        List.generate(itemCount, (index) => itemBuilder(context, index)),
+            List.generate(itemCount, (index) => itemBuilder(context, index)),
       ),
     );
   }

@@ -86,7 +86,3 @@ class PlaceInfoBottomSheet extends StatelessWidget {
     );
   }
 }
-
-
-
-

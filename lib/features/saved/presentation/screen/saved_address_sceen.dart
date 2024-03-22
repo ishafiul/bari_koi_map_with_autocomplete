@@ -1,14 +1,9 @@
 import 'package:bari_koi_map_with_autocomplete/app/app_router.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
-import 'package:bari_koi_map_with_autocomplete/core/config/env.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/data/models/autocomplete_model.dart';
-import 'package:bari_koi_map_with_autocomplete/features/map/data/repositories/autocomplete_repository.dart';
-import 'package:bari_koi_map_with_autocomplete/features/map/data/services/remote/autocomplete_service.dart';
 import 'package:bari_koi_map_with_autocomplete/features/map/domain/cubits/selected_place/selected_place_cubit.dart';
-import 'package:bari_koi_map_with_autocomplete/features/map/domain/usecase/get_autocomplete.dart';
 import 'package:bari_koi_map_with_autocomplete/features/saved/domain/cubits/saved_places/saved_places_cubit.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

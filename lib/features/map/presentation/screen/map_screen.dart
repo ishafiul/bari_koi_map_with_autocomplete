@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:bari_koi_map_with_autocomplete/bootstrap.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/colors.dart';
 import 'package:bari_koi_map_with_autocomplete/core/config/env.dart';
 import 'package:bari_koi_map_with_autocomplete/core/utils/custom_icons_icons.dart';
@@ -44,7 +43,7 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  _update(LatLng latLng) async {
+  Future<void> _update(LatLng latLng) async {
     await updateMapPosition(
       controller: mController!,
       latLng: latLng,
@@ -69,8 +68,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   void didChangeDependencies() {
-
-
     super.didChangeDependencies();
   }
 
@@ -82,7 +79,7 @@ class _MapScreenState extends State<MapScreen> {
       bottomSheet: BlocConsumer<SelectedPlaceCubit, SelectedPlaceState>(
         listener: (context, state) async {
           if (state is SelectedPlaceLoaded) {
-            _update(
+            await _update(
               LatLng(
                 double.parse(state.place.latitude),
                 double.parse(state.place.longitude),
@@ -150,8 +147,8 @@ class _MapScreenState extends State<MapScreen> {
             ),
             onMapCreated: (MaplibreMapController mapController) async {
               mController = mapController;
-              if(widget.place != null) {
-                _update(
+              if (widget.place != null) {
+                await _update(
                   LatLng(
                     double.parse(widget.place!.latitude),
                     double.parse(widget.place!.longitude),

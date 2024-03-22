@@ -26,7 +26,7 @@ class SavedPlaceService {
   Future<Saved?> savePlace(SavedPlace place) async {
     final db = await getIt<DB>().local;
     final savedPlace = await getSavedPlaceByID(placeId: place.uCode!);
-    if(savedPlace != null){
+    if (savedPlace != null) {
       return null;
     }
     int id = 0;

@@ -117,7 +117,6 @@ class AdditionalPlaceInfo extends StatelessWidget {
                   color: const Color(0xFFF4E3E3),
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
-                      width: 1,
                       color: Color(0xFFB44641),
                     ),
                     borderRadius: BorderRadius.circular(7).r,
@@ -181,7 +180,6 @@ class AdditionalPlaceInfo extends StatelessWidget {
                   color: const Color(0xFFE8F0FD),
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
-                      width: 1,
                       color: Color(0xFF669DEF),
                     ),
                     borderRadius: BorderRadius.circular(7).r,

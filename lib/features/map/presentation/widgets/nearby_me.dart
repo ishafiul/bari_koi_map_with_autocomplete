@@ -74,13 +74,13 @@ class NarebyMeList extends StatelessWidget {
                   Text(
                     nearbyMeList[index].text,
                     style: TextStyle(
-                      color: Color(0xFF2F4050),
+                      color: const Color(0xFF2F4050),
                       fontSize: 12.r,
                       fontFamily: 'Graphik',
                       fontWeight: FontWeight.w500,
                       height: 0,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
