@@ -66,6 +66,9 @@ flutter:
     - family:  CustomIcons
       fonts:
       - asset: assets/fonts/icon/CustomIcons.ttf
+    - family: Graphik
+      fonts:
+        - asset: assets/fonts/GraphikRegular.otf
 
 flutter_native_splash:
   image: assets/images/splash_logo.png
