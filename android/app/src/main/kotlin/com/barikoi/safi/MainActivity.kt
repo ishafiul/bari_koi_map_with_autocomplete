@@ -1,4 +1,4 @@
-package com.task.barikoi.safi
+package com.barikoi.safi
 
 import io.flutter.embedding.android.FlutterActivity
 
