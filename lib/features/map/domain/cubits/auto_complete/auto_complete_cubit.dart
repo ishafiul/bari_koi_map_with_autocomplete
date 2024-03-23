@@ -26,6 +26,6 @@ class AutoCompleteCubit extends Cubit<AutoCompleteState> {
       emit(AutoCompleteError(message: "Something went wrong"));
       return;
     }
-    emit(AutoCompleteLoaded(model: response.data));
+    emit(AutoCompleteLoaded(places: response.data));
   }
 }

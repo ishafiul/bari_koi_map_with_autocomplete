@@ -8,9 +8,9 @@ final class AutoCompleteInitial extends AutoCompleteState {}
 final class AutoCompleteLoading extends AutoCompleteState {}
 
 final class AutoCompleteLoaded extends AutoCompleteState {
-  final AutocompleteModel model;
+  final AutocompleteModel places;
 
-  AutoCompleteLoaded({required this.model});
+  AutoCompleteLoaded({required this.places});
 }
 
 final class AutoCompleteError extends AutoCompleteState {

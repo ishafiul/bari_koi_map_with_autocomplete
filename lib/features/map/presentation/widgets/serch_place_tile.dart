@@ -16,7 +16,7 @@ class SearchPlaceTile extends StatelessWidget {
       builder: (context, state) {
         if (state is AutoCompleteLoaded) {
           return ListView.builder(
-            itemCount: state.model.places.length,
+            itemCount: state.places.places.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 decoration: BoxDecoration(
@@ -32,7 +32,7 @@ class SearchPlaceTile extends StatelessWidget {
                     router.go('/');
                     context
                         .read<SelectedPlaceCubit>()
-                        .setSelectedPlace(state.model.places[index]);
+                        .setSelectedPlace(state.places.places[index]);
                   },
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -40,10 +40,10 @@ class SearchPlaceTile extends StatelessWidget {
                     CustomIcons.location_1,
                     color: AppColor.secondary,
                   ),
-                  title: Text(state.model.places[index].address ?? ''),
+                  title: Text(state.places.places[index].address ?? ''),
                   subtitle: Row(
                     children: [
-                      Text(state.model.places[index].area ?? ''),
+                      Text(state.places.places[index].area ?? ''),
                       SizedBox(width: 24.w),
                       Container(
                         height: 24.h,
@@ -55,7 +55,7 @@ class SearchPlaceTile extends StatelessWidget {
                           color: Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(100),
                         ),
-                        child: Text(state.model.places[index].pType ?? ''),
+                        child: Text(state.places.places[index].pType ?? ''),
                       ),
                     ],
                   ),
