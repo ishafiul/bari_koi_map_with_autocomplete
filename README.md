@@ -10,7 +10,7 @@
 - Create a new file named `.env` in the root directory of the project.
 - Add the following content to the `.env` file, replacing `<HOST>` with the Bari Koi API host and `<YOUR_KEY>` with your Bari Koi API key.
 ``` env copy
-# Example: https://barikoi.xyz/v2/api
+# https://barikoi.xyz/v2/api
 BARIKOI_HOST_API=<HOST>
 
 BARIKOI_API_KEY=<YOUR_KEY>
